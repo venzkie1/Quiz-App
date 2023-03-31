@@ -28,6 +28,9 @@ body{
 .quiz-header{
     padding: 4rem;
 }
+.result-item{
+    padding: 1.5rem;
+}
 
 h2{
     padding: 1rem;

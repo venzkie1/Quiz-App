@@ -209,9 +209,11 @@ const b_text = document.getElementById("b_text");
 const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 const submitBtn = document.getElementById("submit");
+const resultBtn = document.getElementById("result");
 
 let currentQuiz = 0;
 let score = 0;
+let correctAnswers = [];
 
 loadQuiz();
 
@@ -220,8 +222,7 @@ function loadQuiz() {
 
     const currentQuizData = quizData[currentQuiz];
     
-    questionEl.innerText = currentQuizData.
-    question;
+    questionEl.innerText = currentQuizData.question;
     a_text.innerText = currentQuizData.a;
     b_text.innerText = currentQuizData.b;
     c_text.innerText = currentQuizData.c;
@@ -261,6 +262,10 @@ submitBtn.addEventListener("click", () => {
             if (answer === quizData[currentQuiz].answer)
             {
                 score++;
+                correctAnswers.push(true);
+            }
+            else{
+                correctAnswers.push(false);
             }
         }
 
@@ -271,11 +276,26 @@ submitBtn.addEventListener("click", () => {
         }
         else
         {
-        quiz.innerHTML = `
-            <h2>Your score is ${score} out of ${quizData.length}questions.</h2>
-            
-            <button onclick="location.reload()">Reload</button>`;
+        let resultHtml = `<h2>Your score is ${score} out of ${quizData.length} questions.</h2>`;
+        
+        for (let i=0; i<quizData.length; i++){
+            let correct = quizData[i].answer;
+            let userAnswer = correctAnswers[i] ? quizData[i][correct] : getSelected();
+            resultHtml += `<div class="result-item">
+                <p>${i+1}. ${quizData[i].question}</p>
+                <p><strong>Correct answer:</strong> ${quizData[i][correct]}</p>
+                <p><strong>Your answer:</strong> ${userAnswer || '-'}</p>
+            </div>`;
+        }
+
+        quiz.innerHTML = resultHtml;
+        resultBtn.style.display = "block";
+        submitBtn.style.display = "none";
         }
     }
 
+});
+
+resultBtn.addEventListener("click", () => {
+    location.reload();
 });
