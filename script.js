@@ -48,12 +48,12 @@ const quizData = [
         answer: "b"
     },
     {
-        question: "Which HTML tag is used to link to an external stylesheet?",
-        a: "<link>",
-        b: "<script>",
-        c: "<style>",
-        d: "<a>",
-        answer: "a"
+        question: "HTML Question: Which attribute is used to specify the target of a hyperlink?",
+        a: "href",
+        b: "target",
+        c: "link",
+        d: "rel",
+        answer: "b"
     },
     {
         question: "What is the purpose of JavaScript?",
@@ -88,11 +88,11 @@ const quizData = [
         answer: "a"
     },
     {
-        question: "Which HTML tag is used to create a hyperlink?",
-        a: "<a>",
-        b: "<img>",
-        c: "<p>",
-        d: "<div>",
+        question: "Which property is used to control the space between elements?",
+        a: "margin",
+        b: "padding",
+        c: "border",
+        d: "float",
         answer: "a"
     },
     {
@@ -104,12 +104,12 @@ const quizData = [
         answer: "c"
     },
     {
-        question: "What is the correct syntax for adding an external CSS file to an HTML document?",
-        a: '<link rel="stylesheet" type="text/css" href="styles.css">',
-        b: '<style type="text/css">styles.css</style>',
-        c: '<link type="text/css" rel="stylesheet" href="styles.css">',
-        d: '<style rel="stylesheet" type="text/css">styles.css</style>',
-        answer: "a"
+        question: 'JavaScript Question: What does the "typeof" operator return?',
+        a: 'Number',
+        b: 'Boolean',
+        c: 'Object',
+        d: 'String',
+        answer: "c"
     },
     {
         question: "Which of the following is NOT a valid way to declare a variable in JavaScript?",
@@ -173,6 +173,7 @@ const quizData = [
         b: "pop()",
         c: "shift()",
         d: "unshift()",
+        answer: "a"
     },
     {
         question: 'What does the "=== " operator do in JavaScript?',
@@ -222,7 +223,9 @@ function loadQuiz() {
 
     const currentQuizData = quizData[currentQuiz];
     
-    questionEl.innerText = currentQuizData.question;
+    console.log(currentQuizData);
+
+    questionEl.innerText = `${currentQuiz+1}.) ${currentQuizData.question}`;
     a_text.innerText = currentQuizData.a;
     b_text.innerText = currentQuizData.b;
     c_text.innerText = currentQuizData.c;
@@ -276,14 +279,14 @@ submitBtn.addEventListener("click", () => {
         }
         else
         {
-        let resultHtml = `<h2>Your score is ${score} out of ${quizData.length} questions.</h2>`;
+        let resultHtml = `<h2 class="your-result">Your score is ${score} out of ${quizData.length} questions.</h2>`;
         
         for (let i=0; i<quizData.length; i++){
             let correct = quizData[i].answer;
             let userAnswer = correctAnswers[i] ? quizData[i][correct] : getSelected();
             resultHtml += `<div class="result-item">
-                <p>${i+1}. ${quizData[i].question}</p>
-                <p><strong>Correct answer:</strong> ${quizData[i][correct]}</p>
+                <p>${i + 1}.) ${quizData[i].question}</p>
+                <p><strong>Correct answer:</strong> ${correct}.) ${quizData[i][correct]}</p>
                 <p><strong>Your answer:</strong> ${userAnswer || '-'}</p>
             </div>`;
         }

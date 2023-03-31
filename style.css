@@ -19,9 +19,9 @@ body{
 
 .quiz-container{
     background-color: #fff;
-    width: 900px;
+    width: 65%;
     border-radius: 10px;
-    box-shadow: 0 0 5px rgba(100, 100, 100, 0.1);
+    box-shadow: 3px 5px 15px 20px rgba(46, 42, 45, 0.1);
     max-width: 100%;
     overflow: hidden;
 }
@@ -29,12 +29,16 @@ body{
     padding: 4rem;
 }
 .result-item{
+    margin: 1rem 1rem;
     padding: 1.5rem;
+}
+
+.your-result{
+    text-align: center;
 }
 
 h2{
     padding: 1rem;
-    text-align: center;
     margin: 0;
 }
 
