@@ -119,89 +119,8 @@ const quizData = [
         d: "variable w = 40;",
         answer: "d"
     },
-    {
-        question: "Which CSS property can be used to center an element horizontally?",
-        a: "margin-left",
-        b: "margin-right",
-        c: "text-align",
-        d: "justify-content",
-        answer: "c"
-    },
-    {
-        question: "Which JavaScript function is used to find the length of a string?",
-        a: "length()",
-        b: "size()",
-        c: "count()",
-        d: "find()",
-        answer: "a"
-    },
-    {
-        question: "Which JavaScript function is used to convert a string to uppercase?",
-        a: "toUpperCase()",
-        b: "toLowerCase()",
-        c: "concat()",
-        d: "replace()",
-        answer: "a"
-    },
-    {
-        question: "Which CSS property can be used to adjust the spacing between lines of text?",
-        a: "line-height",
-        b: "text-indent",
-        c: "text-align",
-        d: "letter-spacing",
-        answer: "a"
-    },
-    {
-        question: "What is React.js?",
-        a: "A server-side web development language",
-        b: "A client-side web development library",
-        c: "A relational database management system",
-        d: "A programming language for creating desktop applications",
-        answer: "b"
-    },
-    {
-        question: "What is a component in React.js?",
-        a: "A JavaScript function that returns HTML code",
-        b: "A JavaScript class that extends the React.Component class",
-        c: "A variable that stores data for a React application",
-        d: "An external library that can be used with React.js",
-        answer: "b"
-    },
-    {
-        question: "Which method is used to add an element to the end of an array in JavaScript?",
-        a: "push()",
-        b: "pop()",
-        c: "shift()",
-        d: "unshift()",
-        answer: "a"
-    },
-    {
-        question: 'What does the "=== " operator do in JavaScript?',
-        a: "It checks for equality of value but not type",
-        b: "It checks for equality of value and type",
-        c: "It checks for inequality of value and type",
-        d: "It checks for inequality of value but not type",
-        answer: "b"
-    },
-    {
-        question: "Which of the following is NOT a valid way to create a function in JavaScript?",
-        a: "function myFunc() {}",
-        b: "const myFunc = function() {};",
-        c: "const myFunc = () => {};",
-        d: "let myFunc = {};",
-        answer: "d"
-    },
-    {
-        question: "What does the Array.map() method do in JavaScript?",
-        a: "It modifies the original array",
-        b: "It returns a new array with the same length as the original array, but with each element modified according to a provided function ",
-        c: "It removes elements from an array",
-        d: "It adds elements to an array",
-        answer: "b"
-    },
-
-
 ];
+const inform = document.getElementById('info');
 const quiz = document.getElementById('quiz');
 const answerEls = document.querySelectorAll('.answer');
 const questionEl = document.getElementById("question");
@@ -225,7 +144,7 @@ function loadQuiz() {
     
     console.log(currentQuizData);
 
-    questionEl.innerText = `${currentQuiz+1}.) ${currentQuizData.question}`;
+    questionEl.innerText = `${currentQuiz+1}/15.) ${currentQuizData.question}`;
     a_text.innerText = currentQuizData.a;
     b_text.innerText = currentQuizData.b;
     c_text.innerText = currentQuizData.c;
@@ -279,7 +198,7 @@ submitBtn.addEventListener("click", () => {
         }
         else
         {
-        let resultHtml = `<h2 class="your-result">Your score is ${score} out of ${quizData.length} questions.</h2>`;
+        let resultHtml = `<h2 class="your-result">You correctly answered ${score} out of ${quizData.length} questions.</h2>`;
         
         for (let i=0; i<quizData.length; i++){
             let correct = quizData[i].answer;
